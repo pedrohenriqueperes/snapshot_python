@@ -1,7 +1,8 @@
 import cv2
 import os
+import time
 
-video_capture = cv2.VideoCapture('/Users/pedro/Desktop/untitled folder 3/335483_480p_.mp4')
+video_capture = cv2.VideoCapture('/Users/pedro/Desktop/untitled folder 3/milena.mp4')
 
 
 if not video_capture.isOpened():
@@ -15,6 +16,8 @@ output_directory = '/Users/pedro/Desktop/untitled folder 3/frames'
 if not os.path.exists(output_directory):
     os.makedirs(output_directory)
 
+frame_interval = 30
+
 while True:
     # Read a frame from the video
     ret, frame = video_capture.read()
@@ -22,11 +25,14 @@ while True:
     if not ret:
         break
 
-    frame_filename = os.path.join(output_directory, f'frame_{frame_count:04d}.png')
+    if frame_count % frame_interval == 0:
+
+        frame_filename = os.path.join(output_directory, f'frame_{frame_count:04d}.png')
     #print(f'Saving frame as: {frame_filename}')
-    cv2.imwrite(frame_filename, frame)
+        cv2.imwrite(frame_filename, frame)
 
     frame_count += 1
+
 #print(f'Output directory: {output_directory}')
 
 video_capture.release()
