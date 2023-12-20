@@ -2,7 +2,7 @@ import cv2
 import os
 import time
 
-video_capture = cv2.VideoCapture('/Users/pedro/Desktop/untitled folder 3/milena.mp4')
+video_capture = cv2.VideoCapture('path to file')
 
 
 if not video_capture.isOpened():
@@ -11,7 +11,7 @@ if not video_capture.isOpened():
 
 frame_count = 0
 
-output_directory = '/Users/pedro/Desktop/untitled folder 3/frames'
+output_directory = '' #path to folder where the photos will go to
 
 if not os.path.exists(output_directory):
     os.makedirs(output_directory)
